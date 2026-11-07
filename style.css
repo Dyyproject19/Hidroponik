@@ -1,0 +1,534 @@
+/* ==========================================================
+   HidroHijau – style.css
+   Palet: air dalam, aqua, daun, tunas, kabut
+   ========================================================== */
+
+:root {
+  --water-deep: #0b3a42;
+  --water: #1b8a8f;
+  --water-light: #6fcfcf;
+  --leaf: #3f8f2e;
+  --sprout: #b7e05a;
+  --mist: #e8f3f0;
+  --paper: #f8fcfb;
+  --ink: #10282c;
+  --ink-soft: #3d5a5e;
+  --line: #c9dedb;
+
+  --font-head: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius: 14px;
+  --page-pad: clamp(20px, 5vw, 64px);
+}
+
+/* ---------- Reset ringan ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  line-height: 1.1;
+  margin: 0;
+  color: var(--water-deep);
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+ol,
+dl {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--water);
+  outline-offset: 3px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px var(--page-pad);
+  background: rgba(248, 252, 251, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--water-deep);
+  text-decoration: none;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.main-nav a:hover {
+  color: var(--water);
+}
+
+/* ---------- Tombol ---------- */
+.btn {
+  display: inline-block;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-primary {
+  background: var(--water-deep);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--water);
+}
+
+.btn-ghost {
+  border-color: var(--water-deep);
+  color: var(--water-deep);
+}
+
+.btn-ghost:hover {
+  background: var(--mist);
+}
+
+.btn-light {
+  background: var(--sprout);
+  color: var(--water-deep);
+}
+
+.btn-light:hover {
+  background: #fff;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+  padding: clamp(40px, 8vw, 96px) var(--page-pad);
+  background: var(--mist);
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 5.6vw, 4.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  max-width: 14em;
+}
+
+.lead {
+  margin-top: 22px;
+  max-width: 34em;
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+/* ---------- Foto hero ---------- */
+.hero-photo {
+  margin: 0;
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: 14px 14px 0 var(--water-light);
+}
+
+/* ---------- Seksi umum ---------- */
+.section {
+  padding: clamp(56px, 8vw, 104px) var(--page-pad);
+}
+
+.section-tint {
+  background: var(--mist);
+}
+
+.section-head {
+  max-width: 40rem;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.section-head h2 {
+  font-size: clamp(1.8rem, 3.6vw, 2.7rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.section-head p {
+  margin-top: 14px;
+  color: var(--ink-soft);
+}
+
+/* ---------- Langkah (berurutan) ---------- */
+.steps {
+  list-style: none;
+  counter-reset: langkah;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  position: relative;
+}
+
+.steps li {
+  counter-increment: langkah;
+  position: relative;
+  padding-top: 64px;
+}
+
+.steps li::before {
+  content: counter(langkah);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--water-deep);
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+/* garis penghubung antar-langkah, seperti akar */
+.steps li::after {
+  content: "";
+  position: absolute;
+  top: 21px;
+  left: 52px;
+  right: -24px;
+  height: 2px;
+  background: var(--water-light);
+}
+
+.steps li:last-child::after {
+  display: none;
+}
+
+.steps h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.steps p {
+  color: var(--ink-soft);
+}
+
+/* ---------- Keunggulan ---------- */
+.benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 clamp(24px, 6vw, 80px);
+  max-width: 62rem;
+}
+
+.benefits div {
+  padding: 24px 0;
+  border-top: 2px solid var(--water);
+}
+
+.benefits dt {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--water-deep);
+}
+
+.benefits dd {
+  margin: 8px 0 0;
+  color: var(--ink-soft);
+}
+
+/* ---------- Tabel sistem ---------- */
+.table-wrap {
+  overflow-x: auto;
+  max-width: 62rem;
+}
+
+table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead th {
+  padding: 12px 16px;
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  border-bottom: 2px solid var(--water-deep);
+}
+
+tbody th,
+tbody td {
+  padding: 20px 16px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+
+tbody th {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  color: var(--water-deep);
+  white-space: nowrap;
+}
+
+tbody tr:hover {
+  background: var(--mist);
+}
+
+/* ---------- Tanaman ---------- */
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 48rem;
+}
+
+.chips li {
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid var(--leaf);
+  font-weight: 600;
+  color: var(--water-deep);
+}
+
+/* ---------- Perlengkapan ---------- */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(24px, 6vw, 80px);
+  align-items: start;
+}
+
+.split .section-head {
+  margin-bottom: 0;
+}
+
+.checklist {
+  list-style: none;
+}
+
+.checklist li {
+  position: relative;
+  padding: 16px 0 16px 40px;
+  border-bottom: 1px solid var(--line);
+}
+
+.checklist li:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 22px;
+  width: 8px;
+  height: 14px;
+  border-right: 3px solid var(--leaf);
+  border-bottom: 3px solid var(--leaf);
+  transform: rotate(40deg);
+}
+
+/* ---------- FAQ ---------- */
+.faq {
+  max-width: 46rem;
+}
+
+.faq details {
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+}
+
+.faq details:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.faq summary {
+  cursor: pointer;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--water-deep);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  flex-shrink: 0;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--water);
+}
+
+.faq details[open] summary::after {
+  content: "–";
+}
+
+.faq details p {
+  margin-top: 12px;
+  color: var(--ink-soft);
+  max-width: 40rem;
+}
+
+/* ---------- CTA ---------- */
+.cta {
+  padding: clamp(64px, 9vw, 112px) var(--page-pad);
+  background: var(--water-deep);
+  color: #fff;
+  text-align: center;
+}
+
+.cta h2 {
+  color: #fff;
+  font-size: clamp(2rem, 4.4vw, 3.2rem);
+  font-weight: 800;
+  max-width: 18em;
+  margin-inline: auto;
+}
+
+.cta p {
+  margin: 18px auto 32px;
+  max-width: 32em;
+  color: #cfe6e3;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding: 28px var(--page-pad);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.site-footer .brand {
+  font-size: 1.1rem;
+}
+
+/* ---------- Responsif ---------- */
+@media (max-width: 900px) {
+  .hero,
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .steps {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 40px;
+  }
+
+  .steps li:nth-child(2)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .main-nav {
+    gap: 2px 16px;
+    font-size: 0.95rem;
+  }
+
+  .steps,
+  .benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .steps li::after {
+    display: none;
+  }
+
+}
+
+/* ---------- Hormati preferensi gerak ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+}
